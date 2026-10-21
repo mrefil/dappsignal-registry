@@ -9,7 +9,7 @@ on:
       - "scripts/validate-registry.mjs"
       - ".github/workflows/validate.yml"
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - "projects/**/*.json"
       - "projects/*.json"
