@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mrefil/dappsignal-registry/blob/main/project.schema.json",
+  "title": "DappSignal project manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "slug",
+    "name",
+    "tagline",
+    "description",
+    "logo_url",
+    "website_url",
+    "social_links",
+    "primary_category_id",
+    "tags",
+    "chains"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 100
+    },
+    "tagline": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 160
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 5000
+    },
+    "logo_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "website_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "social_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "x": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "discord": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "telegram": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "github": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "medium": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "youtube": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "docs": { "type": "string", "format": "uri", "pattern": "^https://" }
+      }
+    },
+    "primary_category_id": {
+      "type": "string",
+      "enum": [
+        "defi",
+        "games",
+        "nfts",
+        "social",
+        "wallets",
+        "infrastructure",
+        "bridges",
+        "payments",
+        "dao-governance",
+        "ai-depin",
+        "prediction-markets",
+        "real-world-assets",
+        "other"
+      ]
+    },
+    "subcategory_id": {
+      "type": "string",
+      "enum": [
+        "dex-trading",
+        "lending",
+        "yield",
+        "derivatives",
+        "liquid-staking",
+        "stablecoins",
+        "games-games",
+        "virtual-worlds",
+        "game-infrastructure",
+        "nft-marketplaces",
+        "nft-collections",
+        "creator-tools",
+        "data-analytics",
+        "oracles",
+        "rpc-nodes",
+        "identity",
+        "developer-tools",
+        "ai-agents",
+        "compute-storage",
+        "wireless",
+        "physical-infrastructure",
+        "tokenized-funds",
+        "tokenized-credit",
+        "tokenized-commodities"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "maxLength": 32
+      }
+    },
+    "chains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["chain_id", "addresses"],
+        "properties": {
+          "chain_id": {
+            "type": "string",
+            "enum": ["ethereum", "base", "bnb-smart-chain", "solana"]
+          },
+          "addresses": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["address", "address_kind"],
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "address_kind": {
+                  "type": "string",
+                  "enum": ["contract", "program"]
+                },
+                "start_position": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "slug": "replace-with-project-slug",
+  "name": "Replace with project name",
+  "tagline": "A short, factual description of the project.",
+  "description": "Explain what the project does, who it serves, and which parts are available on each listed chain.",
+  "logo_url": "https://example.com/logo.png",
+  "website_url": "https://example.com",
+  "social_links": {
+    "x": "https://x.com/example",
+    "github": "https://github.com/example"
+  },
+  "primary_category_id": "other",
+  "tags": [],
+  "chains": [
+    {
+      "chain_id": "ethereum",
+      "addresses": [
+        {
+          "address": "0x1111111111111111111111111111111111111111",
+          "address_kind": "contract",
+          "start_position": 0
+        }
+      ]
+    }
+  ]
+}
