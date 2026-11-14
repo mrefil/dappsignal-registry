@@ -148,11 +148,21 @@
                 },
                 "address_kind": {
                   "type": "string",
-                  "enum": ["contract", "program"]
+                  "enum": ["contract", "program", "account"]
                 },
                 "start_position": {
-                  "type": "integer",
+                  "type": ["integer", "null"],
                   "minimum": 0
+                },
+                "track_metrics": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Collect activity for this address. False keeps the mapping display-only."
+                },
+                "shared_tracking": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Reviewed opt-in permitting tracking alongside other projects; not an ownership claim."
                 }
               }
             }

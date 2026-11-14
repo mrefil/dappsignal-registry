@@ -40,3 +40,7 @@ The pull request workflow uses a GitHub-hosted runner, read-only repository perm
 Code in this repository is licensed under MIT; see LICENSE.
 
 Project manifests in projects/ are licensed under CC BY 4.0; see DATA-LICENSE.md. This allows commercial reuse, including by competing services, when the required credit is given and changes are identified. Project names, logos, and trademarks remain the property of their respective owners; linking to a logo does not grant a license to reuse it.
+
+## Address activity settings
+
+Reviewed mappings default to track_metrics=true and exclusive tracking. Use track_metrics=false for display-only mappings. Maintainers may explicitly approve shared_tracking=true to collect the same chain address under more than one project; this is not a claim of exclusive ownership. Duplicate addresses within one manifest remain invalid, and two ordinary exclusive tracked listings still conflict. EVM mappings use contract; Solana supports program and account. These flags are ingestion settings and do not add a public profile label.
