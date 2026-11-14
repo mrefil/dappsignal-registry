@@ -157,6 +157,7 @@ for (const filename of projectFiles) {
     continue;
   }
   const projectChains = new Set();
+  const projectAddresses = new Set();
   for (const chain of project.chains) {
     if (!chain || typeof chain !== "object" || Array.isArray(chain) ||
         !hasOnlyKeys(chain, ["chain_id", "addresses"])) {
@@ -176,7 +177,7 @@ for (const filename of projectFiles) {
 
     for (const item of chain.addresses) {
       if (!item || typeof item !== "object" || Array.isArray(item) ||
-          !hasOnlyKeys(item, ["address", "address_kind", "start_position"])) {
+          !hasOnlyKeys(item, ["address", "address_kind", "start_position", "track_metrics", "shared_tracking"])) {
         fail(file, chain.chain_id + " address has unsupported fields");
         continue;
       }
@@ -190,22 +191,29 @@ for (const filename of projectFiles) {
         ? /^[1-9A-HJ-NP-Za-km-z]{32,44}$/
         : /^0x[0-9a-fA-F]{40}$/;
       if (!addressPattern.test(item.address)) fail(file, chain.chain_id + " address has an invalid format");
-      const expectedKind = isSolana ? "program" : "contract";
-      if (item.address_kind !== expectedKind) {
-        fail(file, chain.chain_id + " addresses must use address_kind " + expectedKind);
+      const validKinds = isSolana ? ["program", "account"] : ["contract"];
+      if (!validKinds.includes(item.address_kind)) {
+        fail(file, chain.chain_id + " addresses must use address_kind " + validKinds.join(" or "));
       }
-      if (item.start_position !== undefined &&
+      if (item.start_position !== undefined && item.start_position !== null &&
           (!Number.isSafeInteger(item.start_position) || item.start_position < 0)) {
         fail(file, "start_position must be a non-negative safe integer");
       }
 
+      for (const flag of ["track_metrics", "shared_tracking"]) {
+        if (item[flag] !== undefined && typeof item[flag] !== "boolean") fail(file, flag + " must be a boolean");
+      }
       const normalized = isSolana ? item.address : item.address.toLowerCase();
       const addressKey = chain.chain_id + ":" + normalized;
-      if (seenAddresses.has(addressKey)) {
-        fail(file, "address is already listed by " + seenAddresses.get(addressKey) +
-          " on " + chain.chain_id);
-      } else {
-        seenAddresses.set(addressKey, file);
+      if (projectAddresses.has(addressKey)) fail(file, "duplicate chain address in this manifest");
+      projectAddresses.add(addressKey);
+      if (item.track_metrics !== false && item.shared_tracking !== true) {
+        if (seenAddresses.has(addressKey)) {
+          fail(file, "address is already tracked by " + seenAddresses.get(addressKey) +
+            " on " + chain.chain_id + "; reviewed shared tracking requires shared_tracking=true");
+        } else {
+          seenAddresses.set(addressKey, file);
+        }
       }
     }
   }

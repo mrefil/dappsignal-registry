@@ -3,7 +3,7 @@
   "slug": "liqzero",
   "name": "LiqZero",
   "tagline": "Decentralized perpetual futures exchange on Orderly Network with built-in referral rewards: create codes, share commissions, and trade with deep liquidity.",
-  "description": "LiqZero.com is a next-generation decentralized exchange for perpetual futures trading, offering low fees, deep liquidity, and seamless on-chain execution through Orderly Network's omnichain order book. LiqZero adds a referral-rewards layer: users create referral codes, customize how commissions are shared with invitees, and earn from direct and indirect trades with an adjustable split. The non-custodial interface covers trading, swaps, prediction markets, portfolios, and vaults. Coverage note: execution currently runs on Orderly Network's shared infrastructure; the mapped BNB address is LiqZero's broker settlement account (an EIP-7702 delegated account), so on-chain activity metrics stay limited until a project-specific contract scope becomes trackable. Chain coverage lists the collateral tokens accepted on each network (USDC, USDT, YUSD, deUSD, USD1, WBTC and the Solana stablecoin mints) as display-only mappings; these shared token contracts are excluded from activity metrics so ecosystem-wide flows are never attributed to LiqZero.",
+  "description": "LiqZero.com is a next-generation decentralized exchange for perpetual futures trading, offering low fees, deep liquidity, and seamless on-chain execution through Orderly Network's omnichain order book. LiqZero adds a referral-rewards layer: users create referral codes, customize how commissions are shared with invitees, and earn from direct and indirect trades with an adjustable split. The non-custodial interface covers trading, swaps, prediction markets, portfolios, and vaults.",
   "logo_url": "https://liqzero.com/favicon.webp",
   "website_url": "https://liqzero.com",
   "social_links": { "x": "https://x.com/LiqZerocom", "docs": "https://liqzero.com/docs" },
@@ -14,35 +14,35 @@
     {
       "chain_id": "bnb-smart-chain",
       "addresses": [
-        { "address": "0xbf542b6d25100d55fa80fd042a7a99550eefa2f9", "address_kind": "contract" },
-        { "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d", "address_kind": "contract", "track_metrics": false },
-        { "address": "0x55d398326f99059fF775485246999027B3197955", "address_kind": "contract", "track_metrics": false },
-        { "address": "0xAB3dBcD9B096C3fF76275038bf58eAC10D22C61f", "address_kind": "contract", "track_metrics": false },
-        { "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d", "address_kind": "contract", "track_metrics": false }
+        { "address": "0xbf542b6d25100d55fa80fd042a7a99550eefa2f9", "address_kind": "contract", "track_metrics": true },
+        { "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0x55d398326f99059fF775485246999027B3197955", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0xAB3dBcD9B096C3fF76275038bf58eAC10D22C61f", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d", "address_kind": "contract", "track_metrics": true, "shared_tracking": true }
       ]
     },
     {
       "chain_id": "ethereum",
       "addresses": [
-        { "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "address_kind": "contract", "track_metrics": false },
-        { "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7", "address_kind": "contract", "track_metrics": false },
-        { "address": "0x4274cd7277c7bb0806bd5fe84b9adae466a8da0a", "address_kind": "contract", "track_metrics": false },
-        { "address": "0x15700b564ca08d9439c58ca5053166e8317aa138", "address_kind": "contract", "track_metrics": false },
-        { "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "address_kind": "contract", "track_metrics": false },
-        { "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d", "address_kind": "contract", "track_metrics": false }
+        { "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0x4274cd7277c7bb0806bd5fe84b9adae466a8da0a", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0x15700b564ca08d9439c58ca5053166e8317aa138", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "address_kind": "contract", "track_metrics": true, "shared_tracking": true },
+        { "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d", "address_kind": "contract", "track_metrics": true, "shared_tracking": true }
       ]
     },
     {
       "chain_id": "base",
       "addresses": [
-        { "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", "address_kind": "contract", "track_metrics": false }
+        { "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", "address_kind": "contract", "track_metrics": true, "shared_tracking": true }
       ]
     },
     {
       "chain_id": "solana",
       "addresses": [
-        { "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "address_kind": "account", "track_metrics": false },
-        { "address": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", "address_kind": "account", "track_metrics": false }
+        { "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "address_kind": "account", "track_metrics": true, "shared_tracking": true },
+        { "address": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", "address_kind": "account", "track_metrics": true, "shared_tracking": true }
       ]
     }
   ]
