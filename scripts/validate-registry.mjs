@@ -170,8 +170,8 @@ for (const filename of projectFiles) {
     }
     if (projectChains.has(chain.chain_id)) fail(file, "duplicate chain " + chain.chain_id);
     projectChains.add(chain.chain_id);
-    if (!Array.isArray(chain.addresses) || chain.addresses.length === 0) {
-      fail(file, chain.chain_id + " must contain at least one address");
+    if (!Array.isArray(chain.addresses) || chain.addresses.length > 100) {
+      fail(file, chain.chain_id + " must contain an addresses array with at most 100 entries");
       continue;
     }
 

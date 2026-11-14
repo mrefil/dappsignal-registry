@@ -8,7 +8,7 @@ The application source code lives in a separate repository. This repository cont
 
 1. Fork this repository.
 2. Copy templates/project.template.json to projects/<slug>.json.
-3. Fill in the project details, category, supported chains, and contract or program addresses.
+3. Fill in the project details, category, supported chains, and any project-specific contract or program addresses (optional).
 4. Open a pull request and complete the listing checklist.
 5. Maintainers review the submission. A merge records editorial approval; publication to DappSignal happens after the registry is connected to the application.
 
@@ -44,3 +44,7 @@ Project manifests in projects/ are licensed under CC BY 4.0; see DATA-LICENSE.md
 ## Address activity settings
 
 Reviewed mappings default to track_metrics=true and exclusive tracking. Use track_metrics=false for display-only mappings. Maintainers may explicitly approve shared_tracking=true to collect the same chain address under more than one project; this is not a claim of exclusive ownership. Duplicate addresses within one manifest remain invalid, and two ordinary exclusive tracked listings still conflict. EVM mappings use contract; Solana supports program and account. These flags are ingestion settings and do not add a public profile label.
+
+## Projects on shared infrastructure
+
+A project can list on supported chains without a dedicated contract. For example, use {"chain_id":"base","addresses":[]} for an Orderly-hosted project with no project-specific address. Reviewers verify the project and its supported chain separately. Empty mappings create no activity metrics and grant no wallet ownership proof. Add project-specific mappings later through a reviewed update. Shared collateral tokens alone do not establish broker-specific activity.
